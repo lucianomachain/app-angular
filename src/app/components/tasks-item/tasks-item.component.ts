@@ -8,7 +8,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./tasks-item.component.css']
 })
 export class TasksItemComponent implements OnInit {
-
+  
   @Input() task: Task = TASKS[0]
   faTimes = faTimes;
   constructor() { }

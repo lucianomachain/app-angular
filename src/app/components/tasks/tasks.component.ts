@@ -20,4 +20,32 @@ export class TasksComponent implements OnInit {
       );
   }
 
+  deleteTask(task: Task){
+    this.ngOnInit()
+    this.taskService.deleteTask(task)
+      .subscribe(
+          tasks=>[
+          this.tasks = this.tasks.filter( (t) => {
+          console.log("task Deleted");
+          return t.id !== task.id
+        })
+      ])
+     
+  }
+
+  toggleReminder(task: Task){
+    task.reminder = !task.reminder
+    //console.log(task)
+    this.taskService.updateTaskReminder(task).subscribe();
+
+  }
+
+  addTask(task: Task){
+   // console.log(task);
+    this.taskService.addTask(task).subscribe(
+      tasks=>[
+      this.tasks.push(task)
+      ])
+ 
+    }
 }
